@@ -54,7 +54,7 @@ public class Battleship {
 
 		} while (shotHit != 3);
 
-		System.out.println("\n\nCongratulations! Battleship Java game finished! You hit 3 ships in " + attempts + " attempts.");
+		System.out.println("\n\nCongratulations!!! Battleship Java game finished! You hit 3 ships in " + attempts + " attempts.");
 		System.out.println();
 		showBoard(board);
 	}
