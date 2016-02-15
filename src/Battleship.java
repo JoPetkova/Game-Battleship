@@ -38,10 +38,10 @@ public class Battleship {
 			
 			System.out.println();
 			
-			shoot(shot);
+			shooting(shot);
 			attempts++;
 			
-			if (hit(shot, ships)) {
+			if (shotHit(shot, ships)) {
 				hint(shot, ships, attempts);
 				shotHit++;
 			} else {
@@ -84,7 +84,7 @@ public class Battleship {
 		
 	}
 
-	public static void shoot(int[] shot) {
+	public static void shooting(int[] shot) {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter the coordinates (position) of your shot: ");
 		
@@ -110,7 +110,7 @@ public class Battleship {
 		
 	}
 
-	public static boolean hit(int[] shot, int[][] ships) {
+	public static boolean shotHit(int[] shot, int[][] ships) {
 		for (int ship = 0; ship < ships.length; ship++) {
 			if (shot[0] == ships[ship][0] && shot[1] == ships[ship][1]) {
 				System.out.printf("You hit a ship located in (%d,%d)\n", shot[0] + 1, shot[1] + 1);
@@ -120,7 +120,7 @@ public class Battleship {
 		return false;
 	}
 
-	public static void hint(int[] shot, int[][] ships, int attempt) {
+	public static void hint(int[] shot, int[][] ships, int attempts) {
 		int row = 0;
 		int	column = 0;
 
@@ -133,12 +133,12 @@ public class Battleship {
 			}
 		}
 
-		System.out.printf("\nHint %d: \nRow %d -> %d ships\n" + "Column %d -> %d ships\n", attempt, shot[0] + 1, row,
+		System.out.printf("\nHint %d: \nRow %d -> %d ships\n" + "Column %d -> %d ships\n", attempts, shot[0] + 1, row,
 				shot[1] + 1, column);
 	}
 
 	public static void changeBoard(int[] shot, int[][] ships, int[][] board) {
-		if (hit(shot, ships)) {
+		if (shotHit(shot, ships)) {
 			System.out.println();
 			board[shot[0]][shot[1]] = 1;
 		} else {
